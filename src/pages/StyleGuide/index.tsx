@@ -1,6 +1,10 @@
 const Index = () => {
-    return <div>Style Guide Page</div>
-  }
-  
-  export default Index
-  
+  return (
+    <div>
+      <div>Style Guide Page</div>
+      <div>Show all design components here</div>
+    </div>
+  )
+}
+
+export default Index
