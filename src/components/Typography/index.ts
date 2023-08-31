@@ -1,3 +1,4 @@
+import TextBody from './TextBody'
 import TextMono from './TextMono'
 
-export { TextMono }
+export { TextBody, TextMono }

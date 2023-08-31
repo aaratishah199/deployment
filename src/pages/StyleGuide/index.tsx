@@ -1,5 +1,5 @@
-import { Title, Text, TitleOrder, Grid } from '@mantine/core'
-import { TextMono } from 'components/Typography'
+import { Title, Text, TitleOrder, Grid, Box } from '@mantine/core'
+import { TextBody, TextMono } from 'components/Typography'
 import theme from 'constants/theme'
 
 type headingType = {
@@ -61,10 +61,15 @@ const Index = () => {
         ))}
       </Col>
       <Col span={3} mt='lg'>
-        {bodyText.map((item) => (
-          <Text fz={item} lh={lineHeights[item]} key={item}>
-            Body/Large/Medium 001
-          </Text>
+        {bodyText.map((item, index) => (
+          <Box mt={index !== 0 ? 'lg' : undefined}>
+            <TextBody fz={item} lh={lineHeights[item]} key={item}>
+              Body/Large/Medium 001
+            </TextBody>
+            <TextBody fz={item} lh={lineHeights[item]} key={item} bold>
+              Body/Large/Medium 001
+            </TextBody>
+          </Box>
         ))}
       </Col>
       <Col span={3} mt='lg'>

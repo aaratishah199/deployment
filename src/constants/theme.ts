@@ -66,12 +66,12 @@ const theme = {
   headings: {
     // properties for individual headings, all of them are optional
     sizes: {
-      h1: { fontSize: '2.5rem', fontWeight: 575, lineHeight: '3rem' },
-      h2: { fontSize: '2.25rem', fontWeight: 575, lineHeight: '2.745rem' },
-      h3: { fontSize: '2rem', fontWeight: 575, lineHeight: '2.4rem' },
-      h4: { fontSize: '1.75rem', fontWeight: 575, lineHeight: '2.1rem' },
-      h5: { fontSize: '1.5rem', fontWeight: 575, lineHeight: '1.875rem' },
-      h6: { fontSize: '1.25rem', fontWeight: 575, lineHeight: '1.5rem' },
+      h1: { fontSize: '2.5rem', fontWeight: 700, lineHeight: '3rem' },
+      h2: { fontSize: '2.25rem', fontWeight: 700, lineHeight: '2.745rem' },
+      h3: { fontSize: '2rem', fontWeight: 700, lineHeight: '2.4rem' },
+      h4: { fontSize: '1.75rem', fontWeight: 700, lineHeight: '2.1rem' },
+      h5: { fontSize: '1.5rem', fontWeight: 700, lineHeight: '1.875rem' },
+      h6: { fontSize: '1.25rem', fontWeight: 700, lineHeight: '1.5rem' },
     },
   },
   spacing: {
