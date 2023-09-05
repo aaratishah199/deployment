@@ -46,7 +46,7 @@ function Nav() {
       width={{ sm: 240, lg: 240 }}
       style={{ border: 'none', backgroundColor: theme.colors.brandBlue[0] }}
     >
-      {links}
+      {links
     </Navbar>
   )
 }
