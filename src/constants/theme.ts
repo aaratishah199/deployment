@@ -30,7 +30,7 @@ const theme = {
     // for display
     d1: '4.5rem',
     d2: '4rem',
-    d3: '3.5rem'
+    d3: '3.5rem',
   },
   lineHeights: {
     xs: '0.975rem',
@@ -106,9 +106,9 @@ const theme = {
     fuchsia,
   },
   gradients: {
-    pink:["#EC4378","#F3725F"],
-    blue: ["#6A5AA7","#546EB5"]
-  }
+    pink: ['#EC4378', '#F3725F'],
+    blue: ['#6A5AA7', '#546EB5'],
+  },
   // primaryColor: 'brand',
   // primaryShade: { light: 4, dark: 5 },
 }
