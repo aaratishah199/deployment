@@ -30,7 +30,7 @@ const theme = {
     // for display
     d1: '4.5rem',
     d2: '4rem',
-    d3: '3.5rem'
+    d3: '3.5rem',
   },
   lineHeights: {
     xs: '0.975rem',
