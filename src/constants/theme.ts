@@ -1,4 +1,3 @@
-import { rem } from '@mantine/core'
 import colors from './colors'
 
 const {
@@ -18,9 +17,36 @@ const {
 
 const theme = {
   fontSizes: {
-    xxl: '1.4rem',
-    xl3: '1.6rem',
-    xl4: '2rem',
+    xs: '0.75rem',
+    sm: '0.875rem',
+    md: '1rem',
+    lg: '1.125rem',
+
+    // for monospace
+    xl: '1.25rem',
+    xl2: '1.5rem',
+    xl3: '2rem',
+
+    // for display
+    d1: '4.5rem',
+    d2: '4rem',
+    d3: '3.5rem',
+  },
+  lineHeights: {
+    xs: '0.975rem',
+    sm: '1.09375rem',
+    md: '1.5rem',
+    lg: '1.35rem',
+
+    // for monospace
+    xl: '1.75rem',
+    xl2: '1.875rem',
+    xl3: '2.4rem',
+
+    // for display
+    d1: '5.4rem',
+    d2: '4.88rem',
+    d3: '4.27rem',
   },
   // components: {
   //   Container: {
@@ -38,14 +64,14 @@ const theme = {
   fontFamily: 'AxalpGroteskVariable, sans-serif',
   fontFamilyMonospace: 'IBMPlexMono',
   headings: {
-    // properties for all headings
-    fontWeight: 500,
-    fontFamily: 'AxalpGroteskVariable',
     // properties for individual headings, all of them are optional
     sizes: {
-      h2: { fontSize: rem(24), fontWeight: 600, lineHeight: rem(28) },
-      h3: { fontSize: rem(20), fontWeight: 600, lineHeight: rem(24) },
-      h4: { fontSize: rem(16), lineHeight: rem(20) },
+      h1: { fontSize: '2.5rem', fontWeight: 700, lineHeight: '3rem' },
+      h2: { fontSize: '2.25rem', fontWeight: 700, lineHeight: '2.745rem' },
+      h3: { fontSize: '2rem', fontWeight: 700, lineHeight: '2.4rem' },
+      h4: { fontSize: '1.75rem', fontWeight: 700, lineHeight: '2.1rem' },
+      h5: { fontSize: '1.5rem', fontWeight: 700, lineHeight: '1.875rem' },
+      h6: { fontSize: '1.25rem', fontWeight: 700, lineHeight: '1.5rem' },
     },
   },
   spacing: {

@@ -5,6 +5,7 @@ import { MantineProvider } from '@mantine/core'
 import * as Sentry from '@sentry/react'
 import theme from 'constants/theme'
 import CustomFonts from 'components/Font/CustomFonts'
+import BonPanel from 'routes'
 
 Sentry.init({
   dsn: '',
@@ -36,7 +37,9 @@ function App() {
     <MantineProvider theme={theme as any} withGlobalStyles withNormalizeCSS>
       <CustomFonts />
       <QueryClientProvider client={queryClient}>
-        <BrowserRouter>Bon International</BrowserRouter>
+        <BrowserRouter>
+          <BonPanel />
+        </BrowserRouter>
       </QueryClientProvider>
     </MantineProvider>
   )
