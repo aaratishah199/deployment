@@ -83,4 +83,4 @@ const theme = {
   // primaryShade: { light: 4, dark: 5 },
 }
 
-export default theme;
+export default theme
