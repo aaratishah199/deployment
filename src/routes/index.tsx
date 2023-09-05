@@ -7,7 +7,7 @@ import PublicRoutes from './PublicRoute'
 import { routes } from 'constants/routes'
 
 const BonPanel = () => {
-  const isAuth = false
+  const isAuth = true
   return (
     <Suspense fallback='Loading...'>
       <Routes>
