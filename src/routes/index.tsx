@@ -4,7 +4,7 @@ import { DashboardPage, LoginPage, StyleGuidePage } from 'pages'
 
 import PrivateRoute from './PrivateRoute'
 import PublicRoutes from './PublicRoute'
-import { routes } from 'constants/routes'
+import { routes } from 'constants/constants'
 
 const BonPanel = () => {
   const isAuth = false

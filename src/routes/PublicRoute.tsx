@@ -1,4 +1,4 @@
-import { routes } from 'constants/routes'
+import { routes } from 'constants/constants'
 import { Navigate, Outlet } from 'react-router-dom'
 
 type Props = {

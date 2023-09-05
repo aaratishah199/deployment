@@ -105,6 +105,10 @@ const theme = {
     purple,
     fuchsia,
   },
+  gradients: {
+    pink:["#EC4378","#F3725F"],
+    blue: ["#6A5AA7","#546EB5"]
+  }
   // primaryColor: 'brand',
   // primaryShade: { light: 4, dark: 5 },
 }
