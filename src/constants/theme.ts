@@ -86,6 +86,9 @@ const theme = {
     xl2: '2rem',
     xl3: '2.5rem',
     xl4: '3rem',
+    // Extra large
+    xl5: '4rem',
+    xl6: '5.5rem',
   },
   borderRadius: {
     normal: '0.25rem',
