@@ -1,42 +1,11 @@
-import { Navbar, Text } from '@mantine/core'
+import { Navbar } from '@mantine/core'
+import { NavbarLinksGroup } from 'components/Navbar/NavbarLinksGroup'
 import theme from 'constants/theme'
-
-const mockdata = [
-  { label: 'Dashboard' },
-  {
-    label: 'Market news',
-    initiallyOpened: true,
-    links: [
-      { label: 'Overview', link: '/' },
-      { label: 'Forecasts', link: '/' },
-      { label: 'Outlook', link: '/' },
-      { label: 'Real time', link: '/' },
-    ],
-  },
-  {
-    label: 'Releases',
-    links: [
-      { label: 'Upcoming releases', link: '/' },
-      { label: 'Previous releases', link: '/' },
-      { label: 'Releases schedule', link: '/' },
-    ],
-  },
-  { label: 'Analytics' },
-  { label: 'Contracts' },
-  { label: 'Settings' },
-  {
-    label: 'Security',
-    links: [
-      { label: 'Enable 2FA', link: '/' },
-      { label: 'Change password', link: '/' },
-      { label: 'Recovery codes', link: '/' },
-    ],
-  },
-]
+import { NavbarMockdata } from 'utils/mockData'
 
 function Nav() {
-  const links = mockdata.map((item) => (
-    <Text key={item.label}>{item.label}</Text>
+  const links = NavbarMockdata.map((item) => (
+    <NavbarLinksGroup data={item} key={item.label} />
   ))
   return (
     <Navbar
@@ -46,7 +15,7 @@ function Nav() {
       width={{ sm: 240, lg: 240 }}
       style={{ border: 'none', backgroundColor: theme.colors.brandBlue[0] }}
     >
-      {links
+      <Navbar.Section>{links}</Navbar.Section>
     </Navbar>
   )
 }

@@ -1,5 +1,8 @@
-import { Text, Box } from '@mantine/core'
+import { Box } from '@mantine/core'
+import BreadCrumb from 'components/BreadCrumb/BreadCrumb'
+import { TextAxalp } from 'components/Typography'
 import theme from 'constants/theme'
+import { Bell } from 'iconoir-react'
 
 function DashboardHeader() {
   return (
@@ -10,7 +13,15 @@ function DashboardHeader() {
         padding: `${theme.spacing.md} ${theme.spacing.xl}`,
       }}
     >
-      <Box style={{ display: 'flex', alignItems: 'center', height: '100%' }}>
+      <Box
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          height: '100%',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+        }}
+      >
         {/* <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
           <Burger
             opened={opened}
@@ -21,7 +32,25 @@ function DashboardHeader() {
           />
         </MediaQuery> */}
 
-        <Text>Dashboard Header</Text>
+        <Box
+          display={'flex'}
+          style={{ flexDirection: 'column', gap: theme.spacing.xs3 }}
+        >
+          <TextAxalp
+            c={theme.colors.slate[10]}
+            fz={theme.fontSizes.xl2}
+            fs={'normal'}
+            fw={575}
+            lh={theme.lineHeights.xl2}
+            tt={'capitalize'}
+          >
+            Company Profile
+          </TextAxalp>
+
+          <BreadCrumb />
+        </Box>
+
+        <Bell />
       </Box>
     </Box>
   )
