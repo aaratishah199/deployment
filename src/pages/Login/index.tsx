@@ -92,6 +92,7 @@ const Index = () => {
                   label='email'
                   type='email'
                   color={theme.colors.slate[7]}
+                  size='md'
                 />
                 <RhfTextInput
                   labelColor={theme.colors.brandBlue[6]}
@@ -100,6 +101,7 @@ const Index = () => {
                   label='password'
                   type='password'
                   color={theme.colors.slate[7]}
+                  size='md'
                 />
 
                 <Box
@@ -115,7 +117,7 @@ const Index = () => {
 
                 <Button
                   type='submit'
-                  size='lg'
+                  size='sm'
                   variant='gradient'
                   gradient={{
                     from: theme?.gradients?.pink[0],

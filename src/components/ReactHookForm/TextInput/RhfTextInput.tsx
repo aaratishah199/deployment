@@ -34,9 +34,9 @@ const RhfTextInput: React.FC<Props> = (props) => {
         },
         input: {
           color: `${color} !important`,
-          padding: rem(14),
+          padding: `${rem(14)} !important`,
           '::placeholder': {
-            color: `${color} !important`,
+            color: `${theme.colors.slate[4]} !important`,
           },
         },
       }}
