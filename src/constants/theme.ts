@@ -32,6 +32,11 @@ const theme = {
     d2: '4rem',
     d3: '3.5rem',
   },
+  fontWeights: {
+    normal: 340,
+    semiBold: 455,
+    bold: 575,
+  },
   lineHeights: {
     xs: '0.975rem',
     sm: '1.09375rem',

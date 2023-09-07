@@ -40,7 +40,7 @@ function DashboardHeader() {
             c={theme.colors.slate[10]}
             fz={theme.fontSizes.xl2}
             fs={'normal'}
-            fw={575}
+            fw={theme.fontWeights.bold}
             lh={theme.lineHeights.xl2}
             tt={'capitalize'}
           >
@@ -50,7 +50,7 @@ function DashboardHeader() {
           <BreadCrumb />
         </Box>
 
-        <Bell />
+        <Bell width={32} height={32} color={theme.colors.brandBlue[8]} />
       </Box>
     </Box>
   )
