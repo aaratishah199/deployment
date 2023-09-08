@@ -112,6 +112,13 @@ const theme = {
     pink: ['#EC4378', '#F3725F'],
     blue: ['#6A5AA7', '#546EB5'],
   },
+  breakpoints: {
+    xs: '30em',
+    sm: '48em',
+    md: '64em',
+    lg: '74em',
+    xl: '90em',
+  },
   // primaryColor: 'brand',
   // primaryShade: { light: 4, dark: 5 },
 }

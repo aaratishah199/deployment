@@ -4,25 +4,27 @@ import airplaneImg from 'assets/images/airplane.png'
 import logo from 'assets/images/logo.png'
 import { TextBody } from 'components/Typography'
 import { FormProvider, useForm } from 'react-hook-form'
-import { yupResolver } from '@hookform/resolvers/yup'
 import { ArrowRight } from 'iconoir-react'
-import * as Yup from 'yup'
 import { useMediaQuery } from '@mantine/hooks'
+import { yupResolver } from '@hookform/resolvers/yup'
 import RhfTextInput from 'components/ReactHookForm/TextInput/RhfTextInput'
+import { useMutation } from '@tanstack/react-query'
+import LoginValidationSchema from '../../validations/login'
+import API from '../../services'
+import { useStore } from 'store/globalStore'
 
 interface LoginFieldTypes {
   email: string
   password: string
 }
 
-const LoginValidationSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Please enter a valid email address')
-    .required('Email is required'),
-  password: Yup.string().min(8).max(32).required('Password is required'),
-})
-
 const Index = () => {
+  const isMediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`)
+  const isSmallScreen = useMediaQuery(`(max-width: ${theme?.breakpoints.sm})`)
+
+  const setToken = useStore((state) => state.setToken)
+  const setUserInfo = useStore((state) => state.setUserInfo)
+
   const methods = useForm<LoginFieldTypes>({
     defaultValues: {
       email: '',
@@ -32,11 +34,15 @@ const Index = () => {
   })
   const { handleSubmit } = methods
 
-  const isMediumScreen = useMediaQuery(`(max-width: 64em)`)
-  const isSmallScreen = useMediaQuery(`(max-width: 48em)`)
+  const { mutate, isLoading } = useMutation(API.login.login)
 
-  const onSubmit = () => {
-    console.log('Form Submitted')
+  const onSubmit = async (data: LoginFieldTypes) => {
+    mutate({ user: data })
+    setUserInfo({
+      name: 'test',
+      email: 'test@test.com',
+    })
+    setToken('ghgfshgfashgdhaf@hgasdg')
   }
 
   return (
@@ -126,7 +132,7 @@ const Index = () => {
                   }}
                   rightIcon={<ArrowRight height={16} width={16} />}
                 >
-                  Login
+                  {isLoading ? 'Logging in' : 'Login'}
                 </Button>
               </Flex>
             </form>
