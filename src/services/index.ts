@@ -1,4 +1,4 @@
-import * as login from "./authentication/login"
+import * as login from './authentication/login'
 
 const API = {
   login,

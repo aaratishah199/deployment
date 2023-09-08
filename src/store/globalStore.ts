@@ -1,15 +1,13 @@
 import { create } from 'zustand'
 import { AuthSliceType, authSlice } from './slices/authSlice'
 import { persist } from 'zustand/middleware'
-import { userSlice, UserSliceType } from './slices/userSlice'
+import { UserProfileType, userProfileSlice } from './slices/userProfileSlice'
 
-type Storetype = AuthSliceType & UserSliceType
+type StoreType = AuthSliceType & UserProfileType
 
-export const useStore = create<Storetype>()((...a) => ({
-  ...persist(userSlice, {
-    name: 'user-info',
-  })(...a),
+export const useStore = create<StoreType>((...a) => ({
   ...persist(authSlice, {
-    name: 'token',
+    name: 'userAuth',
   })(...a),
+  ...userProfileSlice(...a),
 }))

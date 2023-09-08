@@ -1,11 +1,23 @@
 import { StateCreator } from 'zustand'
 
-export type AuthSliceType = {
+type Auth = {
+  name: string
+  email: string
   token: string | null
-  setToken: (token: string) => void
+}
+
+export interface AuthSliceType extends Auth {
+  setAuth: (values: Auth) => void
+}
+
+const initialState = {
+  name: '',
+  email: '',
+  token: null,
 }
 
 export const authSlice: StateCreator<AuthSliceType> = (set) => ({
-  token: null,
-  setToken: (token: string) => set(() => ({ token })),
+  ...initialState,
+  setAuth: ({ name, email, token }: Auth) =>
+    set((state) => ({ ...state, name, email, token })),
 })

@@ -22,8 +22,10 @@ const Index = () => {
   const isMediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`)
   const isSmallScreen = useMediaQuery(`(max-width: ${theme?.breakpoints.sm})`)
 
-  const setToken = useStore((state) => state.setToken)
-  const setUserInfo = useStore((state) => state.setUserInfo)
+  const setAuth = useStore((state) => state.setAuth)
+  const userName = useStore((state) => state.profile.name)
+
+  console.log(userName)
 
   const methods = useForm<LoginFieldTypes>({
     defaultValues: {
@@ -38,11 +40,11 @@ const Index = () => {
 
   const onSubmit = async (data: LoginFieldTypes) => {
     mutate({ user: data })
-    setUserInfo({
+    setAuth({
       name: 'test',
       email: 'test@test.com',
+      token: 'test-token',
     })
-    setToken('ghgfshgfashgdhaf@hgasdg')
   }
 
   return (
