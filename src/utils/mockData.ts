@@ -1,11 +1,14 @@
+import { routes } from 'constants/routes'
+
+const { comapnyProfile, branches, suppliers } = routes
 export const NavbarMockdata = [
-  { label: 'Dashboard', link: '/dashboard' },
+  { label: 'Dashboard' },
   {
     label: 'Administration',
     initiallyOpened: true,
     links: [
-      { label: 'Company Profile', link: '/login' },
-      { label: 'Branches', link: '/' },
+      { label: 'Company Profile', link: comapnyProfile },
+      { label: 'Branches', link: branches },
       { label: 'User Roles', link: '/' },
       { label: 'Staffs', link: '/' },
       { label: 'Clients', link: '/' },
@@ -14,7 +17,7 @@ export const NavbarMockdata = [
         label: 'Company Settings',
         initiallyOpened: true,
         links: [
-          { label: 'Suupliers', link: '/login' },
+          { label: 'Suppliers', link: suppliers },
           { label: 'Banks', link: '/' },
           { label: 'Excchange Rates', link: '/' },
           { label: 'Payment Gateway', link: '/' },

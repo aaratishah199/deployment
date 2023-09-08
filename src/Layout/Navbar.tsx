@@ -1,8 +1,8 @@
 import { Box, Navbar } from '@mantine/core'
 import { NavbarLinksGroup } from 'components/Navbar/NavbarLinksGroup'
 import theme from 'constants/theme'
-import { NavbarMockdata } from 'utils/mockData'
 import logo from 'assets/images/logo.svg'
+import { NavbarMockdata } from 'utils'
 
 function Nav() {
   const links = NavbarMockdata.map((item) => (

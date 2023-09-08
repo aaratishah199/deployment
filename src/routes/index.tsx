@@ -1,6 +1,13 @@
 import { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router'
-import { DashboardPage, LoginPage, StyleGuidePage } from 'pages'
+import {
+  BranchesPage,
+  CompantProfilesPage,
+  DashboardPage,
+  LoginPage,
+  StyleGuidePage,
+  SuppliersPage,
+} from 'pages'
 
 import PrivateRoute from './PrivateRoute'
 import PublicRoutes from './PublicRoute'
@@ -26,11 +33,14 @@ const BonPanel = () => {
           <Route path={routes.styleGuide} element={<StyleGuidePage />} />
         </Route>
 
-        <Route
-          path={routes.dashboard}
-          element={<PrivateRoute isAuth={isAuth} />}
-        >
-          <Route index element={<DashboardPage />} />
+        <Route element={<PrivateRoute isAuth={isAuth} />}>
+          <Route index element={<DashboardPage />} path={routes.dashboard} />
+          <Route
+            element={<CompantProfilesPage />}
+            path={routes.comapnyProfile}
+          />
+          <Route element={<BranchesPage />} path={routes.branches} />
+          <Route element={<SuppliersPage />} path={routes.suppliers} />
         </Route>
       </Routes>
     </Suspense>

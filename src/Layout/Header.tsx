@@ -1,10 +1,12 @@
-import { Box } from '@mantine/core'
+import { Box, Flex, Image } from '@mantine/core'
 import BreadCrumb from 'components/BreadCrumb/BreadCrumb'
-import { TextAxalp } from 'components/Typography'
+import TextAxalpTitle from 'components/Typography/TextAxalpTitle'
 import theme from 'constants/theme'
 import { Bell } from 'iconoir-react'
+import profile from 'assets/images/profilePic.svg'
 
-function DashboardHeader() {
+function DashboardHeader({ title }: { title: string }) {
+  const { fontSize, fontWeight, lineHeight } = theme.headings.sizes.h5
   return (
     <Box
       style={{
@@ -36,21 +38,39 @@ function DashboardHeader() {
           display={'flex'}
           style={{ flexDirection: 'column', gap: theme.spacing.xs3 }}
         >
-          <TextAxalp
+          <TextAxalpTitle
             c={theme.colors.slate[10]}
-            fz={theme.fontSizes.xl2}
+            fz={fontSize}
             fs={'normal'}
-            fw={theme.fontWeights.bold}
-            lh={theme.lineHeights.xl2}
+            fw={fontWeight}
+            lh={lineHeight}
             tt={'capitalize'}
+            order={5}
           >
-            Company Profile
-          </TextAxalp>
+            {title}
+          </TextAxalpTitle>
 
           <BreadCrumb />
         </Box>
 
-        <Bell width={32} height={32} color={theme.colors.brandBlue[8]} />
+        <Flex
+          direction={'row'}
+          gap={theme.spacing.xl}
+          justify={'center'}
+          align={'center'}
+        >
+          <Bell width={32} height={32} color={theme.colors.brandBlue[8]} />
+          <Image
+            width={48}
+            height={48}
+            src={profile}
+            alt='user profile pic'
+            fit='contain'
+            style={{
+              borderRadius: `${theme.borderRadius.pill}`,
+            }}
+          />
+        </Flex>
       </Box>
     </Box>
   )

@@ -33,9 +33,10 @@ const theme = {
     d3: '3.5rem',
   },
   fontWeights: {
-    normal: 340,
-    semiBold: 455,
-    bold: 575,
+    normal: 400,
+    medium: 500,
+    semiBold: 600,
+    bold: 700,
   },
   lineHeights: {
     xs: '0.975rem',

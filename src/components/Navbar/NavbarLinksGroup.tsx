@@ -7,14 +7,16 @@ import {
   createStyles,
 } from '@mantine/core'
 import theme from 'constants/theme'
-import TextAxalp, { TextAxalpLink } from 'components/Typography/TextAxalp'
+import TextAxalp from 'components/Typography/TextAxalp'
 import { useLocation } from 'react-router'
+import { NavArrowDown, NavArrowUp } from 'iconoir-react'
+import { Link } from 'react-router-dom'
 
 const useStyles = createStyles(() => ({
   control: {
     display: 'block',
     width: '100%',
-    padding: `${theme.spacing.xs2} ${theme.spacing.sm}`,
+    padding: `${theme.spacing.xl} ${theme.spacing.xs2} ${theme.spacing.xs} ${theme.spacing.sm}`, //1.5
     fontSize: theme.fontSizes.sm,
     borderRadius: theme.borderRadius.normal,
     fontFamily: 'Axalp Grotesk Variable',
@@ -26,6 +28,17 @@ const useStyles = createStyles(() => ({
   },
 
   link: {
+    fontWeight: 500,
+    display: 'block',
+    textDecoration: 'none',
+    padding: `${theme.spacing.xs2} ${theme.spacing.xs2} ${theme.spacing.xs2} ${theme.spacing.sm}`,
+    fontSize: theme.fontSizes.sm,
+    borderRadius: theme.borderRadius.normal,
+
+    '&:hover': {},
+  },
+
+  nestedLink: {
     fontWeight: 500,
     display: 'block',
     textDecoration: 'none',
@@ -69,26 +82,76 @@ export function LinksGroup({
   )
 
   const location = useLocation()
+  const currentLocation = (routeLink?: string) => {
+    if (!routeLink) return
+    return location.pathname === routeLink
+  }
 
   const [opened, setOpened] = useState(initiallyOpened || false)
+  const [nestedOpened, setNestedOpened] = useState(
+    nestedLinks?.initiallyOpened || false
+  )
   const items = (hasLinks ? links : []).map((link) => (
-    <TextAxalpLink
-      color={theme.colors.brandBlue[7]}
-      fz={theme.fontSizes.xs}
-      fs={'normal'}
-      lh={theme.lineHeights.xs}
-      fw={theme.fontWeights.semiBold}
-      className={classes.link}
-      // color={currentLocation ? '#fff' : `${theme.colors.brandBlue[9]}`}
-      // fz={theme.fontSizes.sm}
-      // fs={'normal'}
-      // lh={theme.lineHeights.sm}
-      href={link.link}
+    <Box
       key={link.label}
-      onClick={(event: React.MouseEvent<HTMLElement>) => event.preventDefault()}
+      onClick={() => {
+        link.links && setNestedOpened(!nestedOpened)
+      }}
+      display={'flex'}
+      bg={currentLocation(link.link) ? theme.colors.brandBlue[7] : 'none'}
+      style={{ borderRadius: theme.borderRadius.normal }}
     >
-      {link.label}
-    </TextAxalpLink>
+      {link.link ? (
+        <Link to={link.link} style={{ textDecoration: 'none' }}>
+          <TextAxalp
+            color={
+              currentLocation(link.link)
+                ? theme.colors.basics[0]
+                : `${theme.colors.brandBlue[9]}`
+            }
+            fz={theme.fontSizes.sm}
+            fs={'normal'}
+            lh={theme.lineHeights.sm}
+            fw={theme.fontWeights.medium}
+            className={classes.link}
+          >
+            {link.label}
+          </TextAxalp>
+        </Link>
+      ) : (
+        <Box
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            flex: 1,
+            cursor: 'pointer',
+          }}
+        >
+          <TextAxalp
+            color={
+              currentLocation(link.link)
+                ? theme.colors.basics[0]
+                : `${theme.colors.brandBlue[9]}`
+            }
+            fz={theme.fontSizes.sm}
+            fs={'normal'}
+            lh={theme.lineHeights.sm}
+            fw={theme.fontWeights.medium}
+            className={classes.link}
+          >
+            {link.label}
+          </TextAxalp>
+          {hasNestedLinks &&
+            (nestedOpened ? (
+              <NavArrowUp color={theme.colors.brandBlue[7]} width={16} />
+            ) : (
+              <NavArrowDown color={theme.colors.brandBlue[7]} width={16} />
+            ))}
+        </Box>
+      )}
+    </Box>
   ))
 
   const nestedItems = (
@@ -96,63 +159,89 @@ export function LinksGroup({
       ? nestedLinks.links
       : []
   ).map((link) => (
-    <TextAxalpLink
-      color={theme.colors.brandBlue[7]}
-      fz={theme.fontSizes.xs}
-      fs={'normal'}
-      lh={theme.lineHeights.xs}
-      fw={theme.fontWeights.semiBold}
-      className={classes.link}
-      href={link?.link}
+    <Box
+      component={Link}
+      to={link.link!}
       key={link?.label}
-      onClick={(event: React.MouseEvent<HTMLElement>) => event.preventDefault()}
+      style={{ textDecoration: 'none' }}
     >
-      {link.label}
-    </TextAxalpLink>
+      <TextAxalp
+        color={
+          currentLocation(link.link)
+            ? theme.colors.basics[0]
+            : `${theme.colors.brandBlue[7]}`
+        }
+        fz={theme.fontSizes.xs}
+        fs={'normal'}
+        lh={theme.lineHeights.xs}
+        fw={theme.fontWeights.medium}
+        className={classes.nestedLink}
+        bg={currentLocation(link.link) ? theme.colors.brandBlue[7] : 'none'}
+      >
+        {link.label}
+      </TextAxalp>
+    </Box>
   ))
-
-  const currentLocation = location.pathname === link
 
   return (
     <>
       <UnstyledButton
-        onClick={() => setOpened((o) => !o)}
+        onClick={() => {
+          setOpened((o) => !o)
+        }}
         className={classes.control}
         style={{
-          background: currentLocation ? theme.colors.brandBlue[7] : 'none',
+          background: currentLocation(link)
+            ? theme.colors.brandBlue[7]
+            : 'none',
         }}
       >
-        <Group position='apart' spacing={0}>
-          <Box sx={{ display: 'flex', alignItems: 'center' }}>
-            <Box>
-              <TextAxalp
-                color={
-                  currentLocation ? '#fff' : `${theme.colors.brandBlue[9]}`
-                }
-                fz={theme.fontSizes.sm}
-                fs={'normal'}
-                lh={theme.lineHeights.sm}
-              >
-                {label}
-              </TextAxalp>
-            </Box>
+        <Group position='apart' spacing={0} style={{}}>
+          <Box
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              flex: 1,
+            }}
+          >
+            <TextAxalp
+              color={
+                currentLocation(link)
+                  ? theme.colors.basics[0]
+                  : `${theme.colors.brandBlue[7]}`
+              }
+              fz={theme.fontSizes.sm}
+              fs={'normal'}
+              lh={theme.lineHeights.sm}
+              tt={'uppercase'}
+              fw={theme.fontWeights.bold}
+              style={{ textAlign: 'center' }}
+            >
+              {label}
+            </TextAxalp>
+
+            {hasLinks &&
+              (opened ? (
+                <NavArrowUp color={theme.colors.brandBlue[7]} width={16} />
+              ) : (
+                <NavArrowDown color={theme.colors.brandBlue[7]} width={16} />
+              ))}
           </Box>
         </Group>
       </UnstyledButton>
       {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
-      {hasNestedLinks ? <Collapse in={opened}>{nestedItems}</Collapse> : null}
+      {hasNestedLinks && opened ? (
+        <Collapse in={nestedOpened}>{nestedItems}</Collapse>
+      ) : null}
     </>
   )
 }
 
 export function NavbarLinksGroup({ data }: { data: LinksGroupProps }) {
   return (
-    <Box
-      sx={(theme) => ({
-        backgroundColor:
-          theme.colorScheme === 'dark' ? theme.colors.dark[6] : theme.white,
-      })}
-    >
+    <Box>
       <LinksGroup {...data} />
     </Box>
   )
