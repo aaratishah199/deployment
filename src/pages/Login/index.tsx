@@ -9,7 +9,7 @@ import { useMediaQuery } from '@mantine/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import RhfTextInput from 'components/ReactHookForm/TextInput/RhfTextInput'
 import { useMutation } from '@tanstack/react-query'
-import LoginValidationSchema from '../../validations/login'
+import LoginValidationSchema from '../../utils/validations/login'
 import API from '../../services'
 import { useStore } from 'store/globalStore'
 
