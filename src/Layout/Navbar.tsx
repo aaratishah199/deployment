@@ -1,4 +1,4 @@
-import { Box, Navbar } from '@mantine/core'
+import { Box, Navbar, ScrollArea } from '@mantine/core'
 import { NavbarLinksGroup } from 'components/Navbar/NavbarLinksGroup'
 import theme from 'constants/theme'
 import logo from 'assets/images/logo.svg'
@@ -35,7 +35,9 @@ function Nav() {
           }}
         />
       </Box>
-      <Navbar.Section pt={theme.spacing.xl}>{links}</Navbar.Section>
+      <Navbar.Section pt={theme.spacing.xl} grow component={ScrollArea}>
+        {links}
+      </Navbar.Section>
     </Navbar>
   )
 }

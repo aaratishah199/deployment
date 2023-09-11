@@ -17,6 +17,7 @@
     "@mantine/dates": "^6.0.19",
     "@mantine/hooks": "^6.0.19",
     "@sentry/react": "^7.64.0",
+    "@tabler/icons-react": "^2.34.0",
     "@tanstack/react-query": "^4.33.0",
     "axios": "^1.5.0",
     "dayjs": "^1.11.9",

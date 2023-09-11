@@ -1,10 +1,10 @@
-import { Text } from '@mantine/core'
+import { Table } from 'components/Table'
 import { Layout } from '../../Layout'
 
 function Branches() {
   return (
     <Layout headerTitle='Branches'>
-      <Text>Branches here</Text>
+      <Table />
     </Layout>
   )
 }
