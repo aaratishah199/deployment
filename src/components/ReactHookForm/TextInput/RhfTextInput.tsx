@@ -31,6 +31,7 @@ const RhfTextInput: React.FC<Props> = (props) => {
           textTransform: 'uppercase',
           marginBottom: theme.spacing.xs3,
           fontSize: theme.fontSizes.xs,
+          letterSpacing: rem(1.5),
         },
         input: {
           color: `${color} !important`,

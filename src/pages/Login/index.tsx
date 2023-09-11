@@ -19,13 +19,11 @@ interface LoginFieldTypes {
 }
 
 const Index = () => {
+  // Media Queries Breakpoint
   const isMediumScreen = useMediaQuery(`(max-width: ${theme.breakpoints.md})`)
   const isSmallScreen = useMediaQuery(`(max-width: ${theme?.breakpoints.sm})`)
 
   const setAuth = useStore((state) => state.setAuth)
-  const userName = useStore((state) => state.profile.name)
-
-  console.log(userName)
 
   const methods = useForm<LoginFieldTypes>({
     defaultValues: {
@@ -36,15 +34,19 @@ const Index = () => {
   })
   const { handleSubmit } = methods
 
-  const { mutate, isLoading } = useMutation(API.login.login)
+  const { mutate, isLoading } = useMutation(API.login.login, {
+    onSuccess: (data) => {
+      const { token } = data.data
+      token &&
+        setAuth({
+          isAuth: true,
+          token,
+        })
+    },
+  })
 
   const onSubmit = async (data: LoginFieldTypes) => {
     mutate({ user: data })
-    setAuth({
-      name: 'test',
-      email: 'test@test.com',
-      token: 'test-token',
-    })
   }
 
   return (
@@ -78,7 +80,7 @@ const Index = () => {
           w='100%'
         >
           <Box>
-            <Title color={theme?.colors.slate[7]} fz={theme.headings.sizes.h2}>
+            <Title color={theme?.colors.slate[7]} fz={rem(28)} lh={rem(33.6)}>
               Login
             </Title>
 
@@ -114,8 +116,10 @@ const Index = () => {
 
                 <Box
                   component='a'
+                  href='/forget-password'
                   sx={{
                     color: theme.colors.brandBlue[7],
+                    textDecoration: 'none',
                   }}
                   fz='sm'
                   fw='bold'
@@ -127,14 +131,17 @@ const Index = () => {
                   type='submit'
                   size='sm'
                   variant='gradient'
+                  loading={isLoading}
                   gradient={{
                     from: theme?.gradients?.pink[0],
                     to: theme?.gradients?.pink[1],
                     deg: 90,
                   }}
-                  rightIcon={<ArrowRight height={16} width={16} />}
+                  rightIcon={
+                    !isLoading && <ArrowRight height={16} width={16} />
+                  }
                 >
-                  {isLoading ? 'Logging in' : 'Login'}
+                  {!isLoading && 'Login'}
                 </Button>
               </Flex>
             </form>

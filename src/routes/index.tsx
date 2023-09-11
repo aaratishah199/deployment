@@ -5,9 +5,10 @@ import { DashboardPage, LoginPage, StyleGuidePage } from 'pages'
 import PrivateRoute from './PrivateRoute'
 import PublicRoutes from './PublicRoute'
 import { routes } from 'constants/constants'
+import { useStore } from 'store/globalStore'
 
 const BonPanel = () => {
-  const isAuth = false
+  const isAuth = useStore((state) => state.isAuth) ? true : false
   return (
     <Suspense fallback='Loading...'>
       <Routes>

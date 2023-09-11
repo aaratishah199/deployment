@@ -1,8 +1,7 @@
 import { StateCreator } from 'zustand'
 
 type Auth = {
-  name: string
-  email: string
+  isAuth: boolean
   token: string | null
 }
 
@@ -10,14 +9,13 @@ export interface AuthSliceType extends Auth {
   setAuth: (values: Auth) => void
 }
 
-const initialState = {
-  name: '',
-  email: '',
+const initialState: Auth = {
+  isAuth: false,
   token: null,
 }
 
 export const authSlice: StateCreator<AuthSliceType> = (set) => ({
   ...initialState,
-  setAuth: ({ name, email, token }: Auth) =>
-    set((state) => ({ ...state, name, email, token })),
+  setAuth: ({ token, isAuth }: Auth) =>
+    set((state) => ({ ...state, token, isAuth })),
 })
