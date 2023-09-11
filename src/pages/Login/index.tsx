@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Image, Title, rem, Center } from '@mantine/core'
+import { Box, Button, Flex, Image, Title, Center } from '@mantine/core'
 import theme from 'constants/theme'
 import airplaneImg from 'assets/images/airplane.png'
 import logo from 'assets/images/logo.png'
@@ -9,9 +9,10 @@ import { useMediaQuery } from '@mantine/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import RhfTextInput from 'components/ReactHookForm/TextInput/RhfTextInput'
 import { useMutation } from '@tanstack/react-query'
-import LoginValidationSchema from '../../utils/validations/login'
-import API from '../../services'
 import { useStore } from 'store/globalStore'
+import API from 'services'
+import LoginValidationSchema from 'utils/validations/login'
+import { routes } from 'constants/constants'
 
 interface LoginFieldTypes {
   email: string
@@ -69,18 +70,13 @@ const Index = () => {
         w={isMediumScreen ? '100vw' : '60vw'}
         gap={theme.spacing.xl2}
       >
-        <Box maw={rem(536)} w='100%'>
+        <Box maw='33.5rem' w='100%'>
           <Image height='3.25rem' width='7.125rem' src={logo} />
         </Box>
 
-        <Flex
-          maw={rem(536)}
-          gap={theme.spacing.xl2}
-          direction='column'
-          w='100%'
-        >
+        <Flex maw='33.5rem' gap={theme.spacing.xl2} direction='column' w='100%'>
           <Box>
-            <Title color={theme?.colors.slate[7]} fz={rem(28)} lh={rem(33.6)}>
+            <Title color={theme?.colors.slate[7]} fz='1.75rem' lh='2.1rem'>
               Login
             </Title>
 
@@ -116,7 +112,7 @@ const Index = () => {
 
                 <Box
                   component='a'
-                  href='/forget-password'
+                  href={routes.forgotPassword}
                   sx={{
                     color: theme.colors.brandBlue[7],
                     textDecoration: 'none',

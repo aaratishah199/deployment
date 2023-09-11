@@ -1,6 +1,6 @@
 import React from 'react'
 import { useFormContext } from 'react-hook-form'
-import { PasswordInput, TextInput, TextInputProps, rem } from '@mantine/core'
+import { PasswordInput, TextInput, TextInputProps } from '@mantine/core'
 import theme from 'constants/theme'
 
 interface Props extends TextInputProps {
@@ -31,11 +31,11 @@ const RhfTextInput: React.FC<Props> = (props) => {
           textTransform: 'uppercase',
           marginBottom: theme.spacing.xs3,
           fontSize: theme.fontSizes.xs,
-          letterSpacing: rem(1.5),
+          letterSpacing: '1.5px',
         },
         input: {
           color: `${color} !important`,
-          padding: `${rem(14)} !important`,
+          padding: `0.875rem !important`,
           '::placeholder': {
             color: `${theme.colors.slate[4]} !important`,
           },

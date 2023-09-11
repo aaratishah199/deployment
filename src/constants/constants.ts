@@ -14,6 +14,7 @@ export const routes = {
   login: '/login',
   dashboard: '/dashboard',
   styleGuide: '/style-guide',
+  forgotPassword: '/forgot-password',
 }
 
 export const appVersion = 'v0.0.1'

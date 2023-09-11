@@ -8,7 +8,7 @@ import { routes } from 'constants/constants'
 import { useStore } from 'store/globalStore'
 
 const BonPanel = () => {
-  const isAuth = useStore((state) => state.isAuth) ? true : false
+  const isAuth = useStore((state) => state.isAuth)
   return (
     <Suspense fallback='Loading...'>
       <Routes>
