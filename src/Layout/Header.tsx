@@ -9,19 +9,18 @@ function DashboardHeader({ title }: { title: string }) {
   const { fontSize, fontWeight, lineHeight } = theme.headings.sizes.h5
   return (
     <Box
-      style={{
+      bg={theme.colors.brandBlue[0]}
+      p={`${theme.spacing.md} ${theme.spacing.xl}`}
+      sx={{
         height: 70,
-        background: theme.colors.brandBlue[0],
-        padding: `${theme.spacing.md} ${theme.spacing.xl}`,
       }}
     >
-      <Box
-        style={{
-          display: 'flex',
-          alignItems: 'center',
+      <Flex
+        direction={'row'}
+        align={'center'}
+        justify={'space-between'}
+        sx={{
           height: '100%',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
         }}
       >
         {/* <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
@@ -34,10 +33,7 @@ function DashboardHeader({ title }: { title: string }) {
           />
         </MediaQuery> */}
 
-        <Box
-          display={'flex'}
-          style={{ flexDirection: 'column', gap: theme.spacing.xs3 }}
-        >
+        <Flex direction={'column'} gap={theme.spacing.xs3}>
           <TextAxalpTitle
             c={theme.colors.slate[10]}
             fz={fontSize}
@@ -51,7 +47,7 @@ function DashboardHeader({ title }: { title: string }) {
           </TextAxalpTitle>
 
           <BreadCrumb />
-        </Box>
+        </Flex>
 
         <Flex
           direction={'row'}
@@ -66,12 +62,12 @@ function DashboardHeader({ title }: { title: string }) {
             src={profile}
             alt='user profile pic'
             fit='contain'
-            style={{
+            sx={{
               borderRadius: `${theme.borderRadius.pill}`,
             }}
           />
         </Flex>
-      </Box>
+      </Flex>
     </Box>
   )
 }

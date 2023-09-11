@@ -19,7 +19,7 @@ export const NavbarMockdata = [
         links: [
           { label: 'Suppliers', link: suppliers },
           { label: 'Banks', link: '/' },
-          { label: 'Excchange Rates', link: '/' },
+          { label: 'Exchange Rates', link: '/' },
           { label: 'Payment Gateway', link: '/' },
           { label: 'Agent Groups', link: '/' },
           { label: 'Supplier Rules', link: '/' },
@@ -28,84 +28,92 @@ export const NavbarMockdata = [
       },
     ],
   },
-  // {
-  //   label: 'Agents',
-  //   initiallyOpened: true,
-  //   links: [
-  //     { label: 'Agents', link: '/login' },
-  //     { label: 'Deposits', link: '/' },
-  //     { label: 'Due Amounts', link: '/' },
-  //     { label: 'Payment Collection', link: '/' },
-  //   ],
-  // },
-  // {
-  //   label: 'Bookings',
-  //   initiallyOpened: true,
-  //   links: [
-  //     { label: 'Blank Booking', link: '/login' },
-  //     { label: 'Existing Bookings', link: '/' },
-  //     { label: 'Incomplete Bookings', link: '/' },
-  //     { label: 'Unconfirmed Bookings', link: '/' },
-  //   ],
-  // },
 ]
 
 export type Person = {
-  firstName: string
-  lastName: string
+  // name: string
+  // age: number
+  branchCode: string
+  branchName: string
   address: string
-  city: string
-  state: string
+  contactDetails: string
+  status: string
 }
 
-export const TableMockData = [
+export const data = [
+  // {
+  //   name: 'John',
+  //   age: 30,
+  // },
+  // {
+  //   name: 'Sara',
+  //   age: 25,
+  // },
   {
-    firstName: 'Wava',
-    lastName: 'Hoppe',
-    address: '4456 Towne Estates',
-    city: 'Edmond',
-    state: 'New Jersey',
+    branchCode: 'BH01',
+    branchName: 'Bon Hoidays Private Limite',
+    address: 'Kathmandu, Nepal',
+    contactDetails: '01-3746384',
+    status: 'active',
   },
   {
-    firstName: 'Kamren',
-    lastName: 'Kemmer',
-    address: '237 Reinger View',
-    city: 'Kesslermouth',
-    state: 'New Jersey',
+    branchCode: 'BH02',
+    branchName: 'Eight Eyes Travel',
+    address: 'Kathmandu, Nepal',
+    contactDetails: '01-947539',
+    status: 'inActive',
   },
   {
-    firstName: 'Dillon',
-    lastName: 'Hackett',
-    address: '79266 Cronin Rest',
-    city: 'Conroyland',
-    state: 'Colorado',
+    branchCode: 'BH03',
+    branchName: 'Arya Village Travel',
+    address: 'Kathmandu, Nepal',
+    contactDetails: '01-934857',
+    status: 'active',
   },
   {
-    firstName: 'Wilber',
-    lastName: 'Von',
-    address: '4162 Della Roads',
-    city: 'Champaign',
-    state: 'Idaho',
+    branchCode: 'BH04',
+    branchName: 'Global Asia Tours',
+    address: 'Kathmandu, Nepal',
+    contactDetails: '01-93857',
+    status: 'inActive',
+  },
+]
+
+export type BranchTable = {
+  branchCode: string
+  branchName: string
+  address: string
+  contactDetails: string
+  status: string
+}
+
+export const BranchTableMockData = [
+  {
+    branchCode: 'BH01',
+    branchName: 'Bon Hoidays Private Limite',
+    address: 'Kathmandu, Nepal',
+    contactDetails: '01-3746384',
+    status: 'active',
   },
   {
-    firstName: 'Ronny',
-    lastName: 'Lowe',
-    address: '4057 Burley Extensions',
-    city: 'Siennastead',
-    state: 'Alaska',
+    branchCode: 'BH02',
+    branchName: 'Eight Eyes Travel',
+    address: 'Kathmandu, Nepal',
+    contactDetails: '01-947539',
+    status: 'inActive',
   },
   {
-    firstName: 'Lavinia',
-    lastName: 'Kreiger',
-    address: '24310 Aufderhar Union',
-    city: 'Ceceliachester',
-    state: 'Kentucky',
+    branchCode: 'BH03',
+    branchName: 'Arya Village Travel',
+    address: 'Kathmandu, Nepal',
+    contactDetails: '01-934857',
+    status: 'active',
   },
   {
-    firstName: 'Tracy',
-    lastName: 'Wilkinson',
-    address: '7204 Claudine Summit',
-    city: 'Fort Melanychester',
-    state: 'Tennessee',
+    branchCode: 'BH04',
+    branchName: 'Global Asia Tours',
+    address: 'Kathmandu, Nepal',
+    contactDetails: '01-93857',
+    status: 'inActive',
   },
 ]

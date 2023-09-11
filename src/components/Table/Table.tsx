@@ -1,66 +1,80 @@
-import { useMemo, useState, useEffect } from 'react'
+import { useMemo } from 'react'
 import {
   MRT_ColumnDef,
+  MRT_Icons,
   MantineReactTable,
   useMantineReactTable,
 } from 'mantine-react-table'
 import { TextAxalp } from 'components/Typography'
 import theme from 'constants/theme'
+import { Person, data } from 'utils/mockData'
+import { SortUp, Search } from 'iconoir-react'
 
-export type Person = {
-  name: string
-  age: number
+const tableIcons: Partial<MRT_Icons> = {
+  //change sort icon, connect internal props so that it gets styled correctly
+  // IconArrowDown: () => <SortDown />,
+  IconSearch: () => <Search />,
+  IconArrowsSort: () => <SortUp width={24} height={24} />,
 }
-
-const data = [
-  {
-    name: 'John',
-    age: 30,
-  },
-  {
-    name: 'Sara',
-    age: 25,
-  },
-]
 
 export default function Table() {
   const columns = useMemo<MRT_ColumnDef<Person>[]>(
     () => [
       {
-        accessorKey: 'name', //simple recommended way to define a column
-        header: 'Name',
-        mantineTableHeadCellProps: { sx: { color: 'green' } }, //optional custom props
-        Header: () => <TextAxalp fz={theme.fontSizes.md}>Name</TextAxalp>,
-        // Cell: ({ cell }: { cell: { getValue: () => ReactNode } }) => (
-        //   <span>{cell.getValue()}</span>
-        // ), //optional custom cell render
+        accessorKey: 'branchCode',
+        header: 'Branch Code',
+        mantineTableHeadCellProps: { sx: { color: 'green' } },
+        Header: () => (
+          <TextAxalp fz={theme.fontSizes.md}>Branch Code</TextAxalp>
+        ),
       },
       {
-        // accessorFn: (row: { age: number }) => row.age, //alternate way
-        accessorKey: 'age',
-        id: 'age', //id required if you use accessorFn instead of accessorKey
+        accessorKey: 'branchName',
+        id: 'Branch Name',
         header: 'Age',
-        Header: () => <TextAxalp fz={theme.fontSizes.md}>Age</TextAxalp>, //optional custom header render
+        Header: () => (
+          <TextAxalp fz={theme.fontSizes.md}>Branch Name</TextAxalp>
+        ),
+      },
+      {
+        accessorKey: 'address',
+        id: 'Address',
+        header: 'Address',
+        Header: () => <TextAxalp fz={theme.fontSizes.md}>Address</TextAxalp>,
+      },
+      {
+        accessorKey: 'contactDetails',
+        id: 'Contact Details',
+        header: 'Contact Details',
+        Header: () => (
+          <TextAxalp fz={theme.fontSizes.md}>Contact Details</TextAxalp>
+        ),
+      },
+      {
+        accessorKey: 'status',
+        id: 'Status',
+        header: 'Status',
+        Header: () => <TextAxalp fz={theme.fontSizes.md}>Status</TextAxalp>,
       },
     ],
     []
   )
 
-  //optionally, you can manage any/all of the table state yourself
-  const [rowSelection, setRowSelection] = useState({})
-
-  useEffect(() => {
-    //do something when the row selection changes
-  }, [rowSelection])
-
   const table = useMantineReactTable({
     columns,
     data,
-    enableColumnOrdering: true, //enable some features
-    enableRowSelection: true,
-    enablePagination: false, //disable a default feature
-    onRowSelectionChange: setRowSelection, //hoist row selection state to your state
-    state: { rowSelection },
+    enablePagination: false,
+    icons: tableIcons,
+
+    mantinePaperProps: {
+      shadow: 'none',
+      sx: {
+        borderRadius: '0',
+        border: 'none !important',
+      },
+    },
+
+    mantineTableProps: {},
   })
 
   return <MantineReactTable table={table} />

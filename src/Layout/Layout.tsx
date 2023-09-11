@@ -26,9 +26,9 @@ const Layout = ({ children, headerTitle }: LayoutProps) => {
         <DashboardHeader title={headerTitle} />
         <Box
           m={`0 ${theme.spacing.xl} ${theme.spacing.xl2} ${theme.spacing.xl}`}
-          style={{
+          bg={theme.colors.basics[0]}
+          sx={{
             boxShadow: '0px 8px 16px 0px rgba(0, 0, 0, 0.06)',
-            background: theme.colors.basics[0],
             borderRadius: theme.borderRadius.normal,
           }}
         >

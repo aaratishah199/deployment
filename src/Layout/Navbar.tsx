@@ -1,4 +1,4 @@
-import { Box, Navbar, ScrollArea } from '@mantine/core'
+import { Flex, Image, Navbar, ScrollArea } from '@mantine/core'
 import { NavbarLinksGroup } from 'components/Navbar/NavbarLinksGroup'
 import theme from 'constants/theme'
 import logo from 'assets/images/logo.svg'
@@ -14,27 +14,24 @@ function Nav() {
       hiddenBreakpoint='sm'
       hidden={false}
       width={{ sm: 240, lg: 240 }}
-      style={{ border: 'none', backgroundColor: theme.colors.brandBlue[0] }}
+      bg={theme.colors.brandBlue[0]}
+      sx={{ border: 'none' }}
     >
-      <Box
-        style={{
-          display: 'flex',
-          padding: `0 ${theme.spacing.sm}`,
-          alignItems: 'flex-start',
+      <Flex
+        p={`0 ${theme.spacing.sm}`}
+        align={'flex-start'}
+        sx={{
           alignSelf: 'stretch',
           width: '100%',
         }}
       >
-        <img
+        <Image
           src={logo}
           alt='Bon International Logo'
           height={'48px'}
-          style={{
-            objectFit: 'contain',
-            display: 'flex',
-          }}
+          fit='contain'
         />
-      </Box>
+      </Flex>
       <Navbar.Section pt={theme.spacing.xl} grow component={ScrollArea}>
         {links}
       </Navbar.Section>

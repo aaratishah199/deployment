@@ -5,6 +5,7 @@ import {
   Collapse,
   UnstyledButton,
   createStyles,
+  Flex,
 } from '@mantine/core'
 import theme from 'constants/theme'
 import TextAxalp from 'components/Typography/TextAxalp'
@@ -99,7 +100,7 @@ export function LinksGroup({
       }}
       display={'flex'}
       bg={currentLocation(link.link) ? theme.colors.brandBlue[7] : 'none'}
-      style={{ borderRadius: theme.borderRadius.normal }}
+      sx={{ borderRadius: theme.borderRadius.normal }}
     >
       {link.link ? (
         <Link to={link.link} style={{ textDecoration: 'none' }}>
@@ -119,12 +120,11 @@ export function LinksGroup({
           </TextAxalp>
         </Link>
       ) : (
-        <Box
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
-            alignItems: 'center',
+        <Flex
+          direction={'row'}
+          justify={'space-between'}
+          align={'center'}
+          sx={{
             flex: 1,
             cursor: 'pointer',
           }}
@@ -149,7 +149,7 @@ export function LinksGroup({
             ) : (
               <NavArrowDown color={theme.colors.brandBlue[7]} width={16} />
             ))}
-        </Box>
+        </Flex>
       )}
     </Box>
   ))
@@ -159,12 +159,7 @@ export function LinksGroup({
       ? nestedLinks.links
       : []
   ).map((link) => (
-    <Box
-      component={Link}
-      to={link.link!}
-      key={link?.label}
-      style={{ textDecoration: 'none' }}
-    >
+    <Box component={Link} to={link.link!} key={link?.label} td={'none'}>
       <TextAxalp
         color={
           currentLocation(link.link)
@@ -190,19 +185,14 @@ export function LinksGroup({
           setOpened((o) => !o)
         }}
         className={classes.control}
-        style={{
-          background: currentLocation(link)
-            ? theme.colors.brandBlue[7]
-            : 'none',
-        }}
+        bg={currentLocation(link) ? theme.colors.brandBlue[7] : 'none'}
       >
         <Group position='apart' spacing={0} style={{}}>
-          <Box
-            style={{
-              display: 'flex',
-              flexDirection: 'row',
-              justifyContent: 'space-between',
-              alignItems: 'center',
+          <Flex
+            direction={'row'}
+            justify={'space-between'}
+            align={'center'}
+            sx={{
               flex: 1,
             }}
           >
@@ -217,7 +207,6 @@ export function LinksGroup({
               lh={theme.lineHeights.sm}
               tt={'uppercase'}
               fw={theme.fontWeights.bold}
-              style={{ textAlign: 'center' }}
             >
               {label}
             </TextAxalp>
@@ -228,7 +217,7 @@ export function LinksGroup({
               ) : (
                 <NavArrowDown color={theme.colors.brandBlue[7]} width={16} />
               ))}
-          </Box>
+          </Flex>
         </Group>
       </UnstyledButton>
       {hasLinks ? <Collapse in={opened}>{items}</Collapse> : null}
