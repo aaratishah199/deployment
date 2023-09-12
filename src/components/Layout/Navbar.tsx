@@ -22,7 +22,6 @@ function Nav() {
         p={`0 ${theme.spacing.sm}`}
         align={'flex-start'}
         justify={'flex-start'}
-        
       >
         <LogoImage
           src={logo}

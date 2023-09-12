@@ -5,12 +5,11 @@ import {
   useMantineReactTable,
   flexRender,
   MRT_ToolbarAlertBanner,
-
 } from 'mantine-react-table'
 import theme from 'constants/theme'
 import { BranchTableType, data } from 'utils/mockData'
 import { SortUp, Search } from 'iconoir-react'
-import { Flex, Stack, Table as MantineTable, Text } from '@mantine/core';
+import { Flex, Stack, Table as MantineTable, Text } from '@mantine/core'
 
 const tableIcons: Partial<MRT_Icons> = {
   IconSearch: () => <Search />,
@@ -25,7 +24,10 @@ export default function Table() {
         header: 'Branch Code',
         mantineTableHeadCellProps: { sx: { color: 'green' } },
         Header: () => (
-          <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Branch Code</Text><SortUp width={24} height={24} /></Flex> 
+          <Flex direction={'row'} gap={theme.spacing.sm}>
+            <Text fz={theme.fontSizes.md}>Branch Code</Text>
+            <SortUp width={24} height={24} />
+          </Flex>
         ),
       },
       {
@@ -33,28 +35,44 @@ export default function Table() {
         id: 'Branch Name',
         header: 'Age',
         Header: () => (
-          <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Branch Name</Text><SortUp width={24} height={24} /></Flex> 
+          <Flex direction={'row'} gap={theme.spacing.sm}>
+            <Text fz={theme.fontSizes.md}>Branch Name</Text>
+            <SortUp width={24} height={24} />
+          </Flex>
         ),
       },
       {
         accessorKey: 'address',
         id: 'Address',
         header: 'Address',
-        Header: () => <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Address</Text><SortUp width={24} height={24} /></Flex> 
+        Header: () => (
+          <Flex direction={'row'} gap={theme.spacing.sm}>
+            <Text fz={theme.fontSizes.md}>Address</Text>
+            <SortUp width={24} height={24} />
+          </Flex>
+        ),
       },
       {
         accessorKey: 'contactDetails',
         id: 'Contact Details',
         header: 'Contact Details',
         Header: () => (
-          <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Contact Details</Text><SortUp width={24} height={24} /></Flex> 
+          <Flex direction={'row'} gap={theme.spacing.sm}>
+            <Text fz={theme.fontSizes.md}>Contact Details</Text>
+            <SortUp width={24} height={24} />
+          </Flex>
         ),
       },
       {
         accessorKey: 'status',
         id: 'Status',
         header: 'Status',
-        Header: () => <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Status</Text><SortUp width={24} height={24} /></Flex> ,
+        Header: () => (
+          <Flex direction={'row'} gap={theme.spacing.sm}>
+            <Text fz={theme.fontSizes.md}>Status</Text>
+            <SortUp width={24} height={24} />
+          </Flex>
+        ),
       },
     ],
     []
@@ -71,28 +89,33 @@ export default function Table() {
     enableFullScreenToggle: false,
     enableColumnActions: false,
 
-    mantineColumnActionsButtonProps: {color:'red'},
+    mantineColumnActionsButtonProps: { color: 'red' },
 
     mantinePaperProps: {
       shadow: 'none',
     },
 
     mantineTableProps: {
-      bg: 'red'
+      bg: 'red',
     },
   })
 
   return (
     <Stack>
       <MantineTable
-        fontSize="lg"
+        fontSize='lg'
         highlightOnHover
-        horizontalSpacing="xl"
+        horizontalSpacing='xl'
         striped
-        verticalSpacing="xs"
-        m="0"
+        verticalSpacing='xs'
+        m='0'
       >
-        <thead style={{height: 60, borderBottom: `2px solid ${theme.colors.slate[1]}`}}>
+        <thead
+          style={{
+            height: 60,
+            borderBottom: `2px solid ${theme.colors.slate[1]}`,
+          }}
+        >
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
               {headerGroup.headers.map((header) => (
@@ -102,7 +125,7 @@ export default function Table() {
                     : flexRender(
                         header.column.columnDef.Header ??
                           header.column.columnDef.header,
-                        header.getContext(),
+                        header.getContext()
                       )}
                 </th>
               ))}
@@ -111,12 +134,18 @@ export default function Table() {
         </thead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <tr key={row.id} style={{height: 60, borderBottom: `2px solid ${theme.colors.slate[1]}`}}>
+            <tr
+              key={row.id}
+              style={{
+                height: 60,
+                borderBottom: `2px solid ${theme.colors.slate[1]}`,
+              }}
+            >
               {row.getVisibleCells().map((cell) => (
                 <td key={cell.id}>
                   {flexRender(
                     cell.column.columnDef.Cell ?? cell.column.columnDef.cell,
-                    cell.getContext(),
+                    cell.getContext()
                   )}
                 </td>
               ))}
@@ -126,5 +155,5 @@ export default function Table() {
       </MantineTable>
       <MRT_ToolbarAlertBanner stackAlertBanner table={table} />
     </Stack>
-  );
+  )
 }

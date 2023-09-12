@@ -6,7 +6,7 @@ import {
   UnstyledButton,
   createStyles,
   Flex,
-  Text
+  Text,
 } from '@mantine/core'
 import theme from 'constants/theme'
 import { useLocation } from 'react-router'
@@ -79,9 +79,7 @@ export function LinksGroup({
   const hasLinks = Array.isArray(links)
   const hasNestedLinks =
     Array.isArray(links) && links.map((l) => Array.isArray(l.links))
-  const nestedLinks = links?.find(
-    (l) => l?.links && l?.links?.find((l1) => l1)
-  )
+  const nestedLinks = links?.find((l) => l?.links && l?.links?.find((l1) => l1))
 
   const location = useLocation()
   const currentLocation = (routeLink?: string) => {
@@ -125,7 +123,6 @@ export function LinksGroup({
           direction={'row'}
           justify={'space-between'}
           align={'center'}
-
           sx={{
             flex: 1,
             cursor: 'pointer',
