@@ -18,8 +18,8 @@ export const TableData = styled('td')`
 `
 
 export const MoreActionButton = styled('div')`
-    padding: 0.4375rem;
-    border-radius: ${theme.borderRadius.pill};
-    background: ${theme.colors.slate[1]};
-    display: inline-flex;
+  padding: 0.4375rem;
+  border-radius: ${theme.borderRadius.pill};
+  background: ${theme.colors.slate[1]};
+  display: inline-flex;
 `

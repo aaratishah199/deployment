@@ -9,10 +9,11 @@ import {
 import theme from 'constants/theme'
 import { BranchTableType, data } from 'utils/mockData'
 import { SortUp, Search } from 'iconoir-react'
-import { Flex, Stack, Table as MantineTable, Text } from '@mantine/core'
-import { MoreActionButton, TableData, TableHead, TableRow } from './Table.style'
+import { Flex, Stack, Table as MantineTable, Text, Chip } from '@mantine/core'
 import { TextMono } from 'components/Typography'
-import {MoreHoriz} from 'iconoir-react'
+import { MoreHoriz } from 'iconoir-react'
+
+import { MoreActionButton, TableData, TableHead, TableRow } from './Table.style'
 
 const tableIcons: Partial<MRT_Icons> = {
   IconSearch: () => <Search />,
@@ -93,6 +94,11 @@ export default function Table() {
             <SortUp width={24} height={24} color={theme.colors.slate[4]} />
           </Flex>
         ),
+        Cell: ({ row }) => {
+          return (
+            <Chip tt={'capitalize'} color='red' variant='filled'>{row.original.status}</Chip>
+          )
+        },
       },
     ],
     []
@@ -116,12 +122,7 @@ export default function Table() {
 
   return (
     <Stack>
-      <MantineTable
-        fontSize='lg'
-        highlightOnHover
-        striped
-        m='0'
-      >
+      <MantineTable fontSize='lg' highlightOnHover striped m='0'>
         <TableHead>
           {table.getHeaderGroups().map((headerGroup) => (
             <tr key={headerGroup.id}>
@@ -152,9 +153,13 @@ export default function Table() {
               ))}
               <TableData>
                 <MoreActionButton>
-                  <MoreHoriz width={24} height={24} color={theme.colors.slate[7]}/>
+                  <MoreHoriz
+                    width={24}
+                    height={24}
+                    color={theme.colors.slate[7]}
+                  />
                 </MoreActionButton>
-                </TableData>
+              </TableData>
             </TableRow>
           ))}
         </tbody>

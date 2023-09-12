@@ -3,6 +3,7 @@ import { NavbarLinksGroup } from 'components/Navbar/NavbarLinksGroup'
 import theme from 'constants/theme'
 import logo from 'assets/images/logo.svg'
 import { NavbarMockdata } from 'utils'
+
 import { LogoImage } from './Layout.style'
 
 function Nav() {
