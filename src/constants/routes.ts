@@ -14,6 +14,9 @@ export const routes = {
   login: '/login',
   dashboard: '/dashboard',
   styleGuide: '/style-guide',
+  branches: '/branches',
+  suppliers: '/company-settings/suppliers',
+  companyProfile: '/company-profile',
 }
 
 export const appVersion = 'v0.0.1'

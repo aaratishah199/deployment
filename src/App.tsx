@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/react'
 import theme from 'constants/theme'
 import CustomFonts from 'components/Font/CustomFonts'
 import BonPanel from 'routes'
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 
 Sentry.init({
   dsn: '',
@@ -34,14 +35,16 @@ function App() {
   })
 
   return (
-    <MantineProvider theme={theme as any} withGlobalStyles withNormalizeCSS>
-      <CustomFonts />
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <BonPanel />
-        </BrowserRouter>
-      </QueryClientProvider>
-    </MantineProvider>
+    <ErrorBoundary>
+      <MantineProvider theme={theme as any} withGlobalStyles withNormalizeCSS>
+        <CustomFonts />
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <BonPanel />
+          </BrowserRouter>
+        </QueryClientProvider>
+      </MantineProvider>
+    </ErrorBoundary>
   )
 }
 
