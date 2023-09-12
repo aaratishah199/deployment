@@ -6,6 +6,7 @@ import * as Sentry from '@sentry/react'
 import theme from 'constants/theme'
 import CustomFonts from 'components/Font/CustomFonts'
 import BonPanel from 'routes'
+import Toast from 'components/Toast'
 
 Sentry.init({
   dsn: '',
@@ -35,6 +36,7 @@ function App() {
 
   return (
     <MantineProvider theme={theme as any} withGlobalStyles withNormalizeCSS>
+      <Toast />
       <CustomFonts />
       <QueryClientProvider client={queryClient}>
         <BrowserRouter>

@@ -1,18 +1,20 @@
 import { Box, Button, Flex, Image, Title, Center } from '@mantine/core'
-import theme from 'constants/theme'
-import airplaneImg from 'assets/images/airplane.png'
-import logo from 'assets/images/logo.png'
-import { TextBody } from 'components/Typography'
 import { FormProvider, useForm } from 'react-hook-form'
 import { ArrowRight } from 'iconoir-react'
 import { useMediaQuery } from '@mantine/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
-import RhfTextInput from 'components/ReactHookForm/TextInput/RhfTextInput'
 import { useMutation } from '@tanstack/react-query'
-import { useStore } from 'store/globalStore'
+import { notifications } from '@mantine/notifications'
 import API from 'services'
 import LoginValidationSchema from 'utils/validations/login'
 import { routes } from 'constants/constants'
+import theme from 'constants/theme'
+import { useStore } from 'store/globalStore'
+import RhfTextInput from 'components/ReactHookForm/TextInput/RhfTextInput'
+import { TextBody } from 'components/Typography'
+
+import airplaneImg from 'assets/images/airplane.png'
+import logo from 'assets/images/logo.png'
 
 interface LoginFieldTypes {
   email: string
@@ -43,6 +45,13 @@ const Index = () => {
           isAuth: true,
           token,
         })
+    },
+    onError: (data) => {
+      notifications.show({
+        title: 'Login Failed',
+        message: 'Invalid Credentials',
+      })
+      console.log(data)
     },
   })
 
