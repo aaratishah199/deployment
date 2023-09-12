@@ -1,15 +1,15 @@
 import { Text } from '@mantine/core'
-import { Link } from 'react-router-dom'
-import { routes } from 'constants/constants'
 import { Layout } from 'components/Layout'
+import { routes } from 'constants/constants'
+import { Link } from 'react-router-dom'
 
-const Index = () => {
+const CompanyProfile = () => {
   return (
-    <Layout headerTitle='Dashboard'>
+    <Layout headerTitle='Company Profile'>
       <Text>Body Goes here</Text>
       <Link to={routes.branches}>branch</Link>
     </Layout>
   )
 }
 
-export default Index
+export default CompanyProfile

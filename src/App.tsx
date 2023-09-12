@@ -7,6 +7,7 @@ import theme from 'constants/theme'
 import CustomFonts from 'components/Font/CustomFonts'
 import BonPanel from 'routes'
 import Toast from 'components/Toast'
+import ErrorBoundary from 'components/ErrorBoundary/ErrorBoundary'
 
 Sentry.init({
   dsn: '',
@@ -35,15 +36,17 @@ function App() {
   })
 
   return (
-    <MantineProvider theme={theme as any} withGlobalStyles withNormalizeCSS>
-      <Toast />
-      <CustomFonts />
-      <QueryClientProvider client={queryClient}>
-        <BrowserRouter>
-          <BonPanel />
-        </BrowserRouter>
-      </QueryClientProvider>
-    </MantineProvider>
+    <ErrorBoundary>
+      <MantineProvider theme={theme as any} withGlobalStyles withNormalizeCSS>
+        <Toast />
+        <CustomFonts />
+        <QueryClientProvider client={queryClient}>
+          <BrowserRouter>
+            <BonPanel />
+          </BrowserRouter>
+        </QueryClientProvider>
+      </MantineProvider>
+    </ErrorBoundary>
   )
 }
 

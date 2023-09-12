@@ -15,6 +15,9 @@ export const routes = {
   dashboard: '/dashboard',
   styleGuide: '/style-guide',
   forgotPassword: '/forgot-password',
+  branches: '/branches',
+  suppliers: '/company-settings/suppliers',
+  companyProfile: '/company-profile',
 }
 
 export const appVersion = 'v0.0.1'
