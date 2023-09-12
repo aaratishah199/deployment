@@ -1,5 +1,4 @@
-import { Breadcrumbs, Anchor } from '@mantine/core'
-import { TextAxalp } from 'components/Typography'
+import { Breadcrumbs, Anchor, Text } from '@mantine/core'
 import theme from 'constants/theme'
 import { NavArrowRight } from 'iconoir-react'
 import { useLocation } from 'react-router'
@@ -13,7 +12,7 @@ interface BreadCrumbsProps {
 const breadcrumbAnchors = (data: BreadCrumbsProps[]) => {
   return data.map((item, index) => (
     <Anchor href={item.href} key={index}>
-      <TextAxalp
+      <Text
         color={theme.colors.brandBlue[9]}
         fz={theme.fontSizes.sm}
         fs={'normal'}
@@ -22,7 +21,7 @@ const breadcrumbAnchors = (data: BreadCrumbsProps[]) => {
         opacity={0.5}
       >
         {unslugifyString(item.title)}
-      </TextAxalp>
+      </Text>
     </Anchor>
   ))
 }

@@ -16,7 +16,7 @@ export const routes = {
   styleGuide: '/style-guide',
   branches: '/branches',
   suppliers: '/company-settings/suppliers',
-  comapnyProfile: '/company-profile',
+  companyProfile: '/company-profile',
 }
 
 export const appVersion = 'v0.0.1'

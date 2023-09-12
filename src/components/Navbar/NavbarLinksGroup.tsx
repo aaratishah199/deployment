@@ -6,9 +6,9 @@ import {
   UnstyledButton,
   createStyles,
   Flex,
+  Text
 } from '@mantine/core'
 import theme from 'constants/theme'
-import TextAxalp from 'components/Typography/TextAxalp'
 import { useLocation } from 'react-router'
 import { NavArrowDown, NavArrowUp } from 'iconoir-react'
 import { Link } from 'react-router-dom'
@@ -35,6 +35,7 @@ const useStyles = createStyles(() => ({
     padding: `${theme.spacing.xs2} ${theme.spacing.xs2} ${theme.spacing.xs2} ${theme.spacing.sm}`,
     fontSize: theme.fontSizes.sm,
     borderRadius: theme.borderRadius.normal,
+    width: '100%',
 
     '&:hover': {},
   },
@@ -79,7 +80,7 @@ export function LinksGroup({
   const hasNestedLinks =
     Array.isArray(links) && links.map((l) => Array.isArray(l.links))
   const nestedLinks = links?.find(
-    (l) => l?.links != undefined && l?.links?.find((l1) => l1)
+    (l) => l?.links && l?.links?.find((l1) => l1)
   )
 
   const location = useLocation()
@@ -103,8 +104,8 @@ export function LinksGroup({
       sx={{ borderRadius: theme.borderRadius.normal }}
     >
       {link.link ? (
-        <Link to={link.link} style={{ textDecoration: 'none' }}>
-          <TextAxalp
+        <Link to={link.link} style={{ textDecoration: 'none', width: '100%' }}>
+          <Text
             color={
               currentLocation(link.link)
                 ? theme.colors.basics[0]
@@ -117,19 +118,20 @@ export function LinksGroup({
             className={classes.link}
           >
             {link.label}
-          </TextAxalp>
+          </Text>
         </Link>
       ) : (
         <Flex
           direction={'row'}
           justify={'space-between'}
           align={'center'}
+
           sx={{
             flex: 1,
             cursor: 'pointer',
           }}
         >
-          <TextAxalp
+          <Text
             color={
               currentLocation(link.link)
                 ? theme.colors.basics[0]
@@ -142,7 +144,7 @@ export function LinksGroup({
             className={classes.link}
           >
             {link.label}
-          </TextAxalp>
+          </Text>
           {hasNestedLinks &&
             (nestedOpened ? (
               <NavArrowUp color={theme.colors.brandBlue[7]} width={16} />
@@ -160,7 +162,7 @@ export function LinksGroup({
       : []
   ).map((link) => (
     <Box component={Link} to={link.link!} key={link?.label} td={'none'}>
-      <TextAxalp
+      <Text
         color={
           currentLocation(link.link)
             ? theme.colors.basics[0]
@@ -174,7 +176,7 @@ export function LinksGroup({
         bg={currentLocation(link.link) ? theme.colors.brandBlue[7] : 'none'}
       >
         {link.label}
-      </TextAxalp>
+      </Text>
     </Box>
   ))
 
@@ -196,7 +198,7 @@ export function LinksGroup({
               flex: 1,
             }}
           >
-            <TextAxalp
+            <Text
               color={
                 currentLocation(link)
                   ? theme.colors.basics[0]
@@ -209,7 +211,7 @@ export function LinksGroup({
               fw={theme.fontWeights.bold}
             >
               {label}
-            </TextAxalp>
+            </Text>
 
             {hasLinks &&
               (opened ? (

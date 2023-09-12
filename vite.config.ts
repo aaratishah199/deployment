@@ -13,7 +13,6 @@ export default defineConfig({
       routes: '/src/routes',
       store: '/src/store',
       utils: '/src/utils',
-      layout: '/src/layout',
     },
   },
 })

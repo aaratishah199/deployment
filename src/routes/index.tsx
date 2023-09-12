@@ -37,7 +37,7 @@ const BonPanel = () => {
           <Route index element={<DashboardPage />} path={routes.dashboard} />
           <Route
             element={<CompantProfilesPage />}
-            path={routes.comapnyProfile}
+            path={routes.companyProfile}
           />
           <Route element={<BranchesPage />} path={routes.branches} />
           <Route element={<SuppliersPage />} path={routes.suppliers} />

@@ -1,5 +1,5 @@
 import { Table } from 'components/Table'
-import { Layout } from '../../Layout'
+import { Layout } from '../../components/Layout'
 
 function Branches() {
   return (

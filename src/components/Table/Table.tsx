@@ -2,30 +2,30 @@ import { useMemo } from 'react'
 import {
   MRT_ColumnDef,
   MRT_Icons,
-  MantineReactTable,
   useMantineReactTable,
+  flexRender,
+  MRT_ToolbarAlertBanner,
+
 } from 'mantine-react-table'
-import { TextAxalp } from 'components/Typography'
 import theme from 'constants/theme'
-import { Person, data } from 'utils/mockData'
+import { BranchTableType, data } from 'utils/mockData'
 import { SortUp, Search } from 'iconoir-react'
+import { Flex, Stack, Table as MantineTable, Text } from '@mantine/core';
 
 const tableIcons: Partial<MRT_Icons> = {
-  //change sort icon, connect internal props so that it gets styled correctly
-  // IconArrowDown: () => <SortDown />,
   IconSearch: () => <Search />,
   IconArrowsSort: () => <SortUp width={24} height={24} />,
 }
 
 export default function Table() {
-  const columns = useMemo<MRT_ColumnDef<Person>[]>(
+  const columns = useMemo<MRT_ColumnDef<BranchTableType>[]>(
     () => [
       {
         accessorKey: 'branchCode',
         header: 'Branch Code',
         mantineTableHeadCellProps: { sx: { color: 'green' } },
         Header: () => (
-          <TextAxalp fz={theme.fontSizes.md}>Branch Code</TextAxalp>
+          <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Branch Code</Text><SortUp width={24} height={24} /></Flex> 
         ),
       },
       {
@@ -33,28 +33,28 @@ export default function Table() {
         id: 'Branch Name',
         header: 'Age',
         Header: () => (
-          <TextAxalp fz={theme.fontSizes.md}>Branch Name</TextAxalp>
+          <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Branch Name</Text><SortUp width={24} height={24} /></Flex> 
         ),
       },
       {
         accessorKey: 'address',
         id: 'Address',
         header: 'Address',
-        Header: () => <TextAxalp fz={theme.fontSizes.md}>Address</TextAxalp>,
+        Header: () => <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Address</Text><SortUp width={24} height={24} /></Flex> 
       },
       {
         accessorKey: 'contactDetails',
         id: 'Contact Details',
         header: 'Contact Details',
         Header: () => (
-          <TextAxalp fz={theme.fontSizes.md}>Contact Details</TextAxalp>
+          <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Contact Details</Text><SortUp width={24} height={24} /></Flex> 
         ),
       },
       {
         accessorKey: 'status',
         id: 'Status',
         header: 'Status',
-        Header: () => <TextAxalp fz={theme.fontSizes.md}>Status</TextAxalp>,
+        Header: () => <Flex direction={'row'} gap={theme.spacing.sm}><Text fz={theme.fontSizes.md}>Status</Text><SortUp width={24} height={24} /></Flex> ,
       },
     ],
     []
@@ -65,17 +65,66 @@ export default function Table() {
     data,
     enablePagination: false,
     icons: tableIcons,
+    enableFilters: false,
+    enableHiding: false,
+    enableDensityToggle: false,
+    enableFullScreenToggle: false,
+    enableColumnActions: false,
+
+    mantineColumnActionsButtonProps: {color:'red'},
 
     mantinePaperProps: {
       shadow: 'none',
-      sx: {
-        borderRadius: '0',
-        border: 'none !important',
-      },
     },
 
-    mantineTableProps: {},
+    mantineTableProps: {
+      bg: 'red'
+    },
   })
 
-  return <MantineReactTable table={table} />
+  return (
+    <Stack>
+      <MantineTable
+        fontSize="lg"
+        highlightOnHover
+        horizontalSpacing="xl"
+        striped
+        verticalSpacing="xs"
+        m="0"
+      >
+        <thead style={{height: 60, borderBottom: `2px solid ${theme.colors.slate[1]}`}}>
+          {table.getHeaderGroups().map((headerGroup) => (
+            <tr key={headerGroup.id}>
+              {headerGroup.headers.map((header) => (
+                <th key={header.id}>
+                  {header.isPlaceholder
+                    ? null
+                    : flexRender(
+                        header.column.columnDef.Header ??
+                          header.column.columnDef.header,
+                        header.getContext(),
+                      )}
+                </th>
+              ))}
+            </tr>
+          ))}
+        </thead>
+        <tbody>
+          {table.getRowModel().rows.map((row) => (
+            <tr key={row.id} style={{height: 60, borderBottom: `2px solid ${theme.colors.slate[1]}`}}>
+              {row.getVisibleCells().map((cell) => (
+                <td key={cell.id}>
+                  {flexRender(
+                    cell.column.columnDef.Cell ?? cell.column.columnDef.cell,
+                    cell.getContext(),
+                  )}
+                </td>
+              ))}
+            </tr>
+          ))}
+        </tbody>
+      </MantineTable>
+      <MRT_ToolbarAlertBanner stackAlertBanner table={table} />
+    </Stack>
+  );
 }

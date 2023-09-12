@@ -1,13 +1,22 @@
 import { routes } from 'constants/routes'
 
-const { comapnyProfile, branches, suppliers } = routes
+export type BranchTableType = {
+  branchCode: string
+  branchName: string
+  address: string
+  contactDetails: string
+  status: string
+}
+
+const { companyProfile, branches, suppliers } = routes
+
 export const NavbarMockdata = [
   { label: 'Dashboard' },
   {
     label: 'Administration',
     initiallyOpened: true,
     links: [
-      { label: 'Company Profile', link: comapnyProfile },
+      { label: 'Company Profile', link: companyProfile },
       { label: 'Branches', link: branches },
       { label: 'User Roles', link: '/' },
       { label: 'Staffs', link: '/' },
@@ -30,64 +39,7 @@ export const NavbarMockdata = [
   },
 ]
 
-export type Person = {
-  // name: string
-  // age: number
-  branchCode: string
-  branchName: string
-  address: string
-  contactDetails: string
-  status: string
-}
-
 export const data = [
-  // {
-  //   name: 'John',
-  //   age: 30,
-  // },
-  // {
-  //   name: 'Sara',
-  //   age: 25,
-  // },
-  {
-    branchCode: 'BH01',
-    branchName: 'Bon Hoidays Private Limite',
-    address: 'Kathmandu, Nepal',
-    contactDetails: '01-3746384',
-    status: 'active',
-  },
-  {
-    branchCode: 'BH02',
-    branchName: 'Eight Eyes Travel',
-    address: 'Kathmandu, Nepal',
-    contactDetails: '01-947539',
-    status: 'inActive',
-  },
-  {
-    branchCode: 'BH03',
-    branchName: 'Arya Village Travel',
-    address: 'Kathmandu, Nepal',
-    contactDetails: '01-934857',
-    status: 'active',
-  },
-  {
-    branchCode: 'BH04',
-    branchName: 'Global Asia Tours',
-    address: 'Kathmandu, Nepal',
-    contactDetails: '01-93857',
-    status: 'inActive',
-  },
-]
-
-export type BranchTable = {
-  branchCode: string
-  branchName: string
-  address: string
-  contactDetails: string
-  status: string
-}
-
-export const BranchTableMockData = [
   {
     branchCode: 'BH01',
     branchName: 'Bon Hoidays Private Limite',

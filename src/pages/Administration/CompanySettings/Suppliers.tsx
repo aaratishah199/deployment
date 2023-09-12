@@ -1,5 +1,5 @@
 import { Text } from '@mantine/core'
-import { Layout } from '../../../Layout'
+import { Layout } from 'components/Layout'
 
 function Suppliers() {
   return (

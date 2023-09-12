@@ -1,6 +1,5 @@
-import { Box, Flex, Image } from '@mantine/core'
+import { Box, Flex, Image, Title } from '@mantine/core'
 import BreadCrumb from 'components/BreadCrumb/BreadCrumb'
-import TextAxalpTitle from 'components/Typography/TextAxalpTitle'
 import theme from 'constants/theme'
 import { Bell } from 'iconoir-react'
 import profile from 'assets/images/profilePic.svg'
@@ -23,18 +22,8 @@ function DashboardHeader({ title }: { title: string }) {
           height: '100%',
         }}
       >
-        {/* <MediaQuery largerThan='sm' styles={{ display: 'none' }}>
-          <Burger
-            opened={opened}
-            onClick={() => setOpened((o) => !o)}
-            size='sm'
-            color={theme.colors.gray[6]}
-            mr='xl'
-          />
-        </MediaQuery> */}
-
         <Flex direction={'column'} gap={theme.spacing.xs3}>
-          <TextAxalpTitle
+          <Title
             c={theme.colors.slate[10]}
             fz={fontSize}
             fs={'normal'}
@@ -44,7 +33,7 @@ function DashboardHeader({ title }: { title: string }) {
             order={5}
           >
             {title}
-          </TextAxalpTitle>
+          </Title>
 
           <BreadCrumb />
         </Flex>

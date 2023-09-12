@@ -1,5 +1,5 @@
 import { Text } from '@mantine/core'
-import { Layout } from '../../Layout'
+import { Layout } from '../../components/Layout'
 import { Link } from 'react-router-dom'
 
 const CompanyProfile = () => {

@@ -1,8 +1,9 @@
-import { Flex, Image, Navbar, ScrollArea } from '@mantine/core'
+import { Flex, Navbar, ScrollArea } from '@mantine/core'
 import { NavbarLinksGroup } from 'components/Navbar/NavbarLinksGroup'
 import theme from 'constants/theme'
 import logo from 'assets/images/logo.svg'
 import { NavbarMockdata } from 'utils'
+import { LogoImage } from './Layout.style'
 
 function Nav() {
   const links = NavbarMockdata.map((item) => (
@@ -15,17 +16,15 @@ function Nav() {
       hidden={false}
       width={{ sm: 240, lg: 240 }}
       bg={theme.colors.brandBlue[0]}
-      sx={{ border: 'none' }}
+      withBorder={false}
     >
       <Flex
         p={`0 ${theme.spacing.sm}`}
         align={'flex-start'}
-        sx={{
-          alignSelf: 'stretch',
-          width: '100%',
-        }}
+        justify={'flex-start'}
+        
       >
-        <Image
+        <LogoImage
           src={logo}
           alt='Bon International Logo'
           height={'48px'}
