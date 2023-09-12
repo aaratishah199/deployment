@@ -154,9 +154,7 @@ export function LinksGroup({
   ))
 
   const nestedItems = (
-    hasNestedLinks && nestedLinks?.links
-      ? nestedLinks.links
-      : []
+    hasNestedLinks && nestedLinks?.links ? nestedLinks.links : []
   ).map((link) => (
     <Box component={Link} to={link.link} key={link?.label} td={'none'}>
       <Text
@@ -186,7 +184,7 @@ export function LinksGroup({
         className={classes.control}
         bg={currentLocation(link) ? theme.colors.brandBlue[7] : 'none'}
       >
-        <Group position='apart' spacing={0} style={{}}>
+        <Group position='apart' spacing={0}>
           <Flex
             direction={'row'}
             justify={'space-between'}

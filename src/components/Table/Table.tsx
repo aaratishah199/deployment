@@ -9,9 +9,10 @@ import {
 import theme from 'constants/theme'
 import { BranchTableType, data } from 'utils/mockData'
 import { SortUp, Search } from 'iconoir-react'
-import { Flex, Stack, Table as MantineTable, Text, Box } from '@mantine/core'
-import { TableData, TableHead, TableRow } from './Table.style'
+import { Flex, Stack, Table as MantineTable, Text } from '@mantine/core'
+import { MoreActionButton, TableData, TableHead, TableRow } from './Table.style'
 import { TextMono } from 'components/Typography'
+import {MoreHoriz} from 'iconoir-react'
 
 const tableIcons: Partial<MRT_Icons> = {
   IconSearch: () => <Search />,
@@ -27,16 +28,20 @@ export default function Table() {
         Header: () => (
           <Flex direction={'row'} gap={theme.spacing.sm}>
             <Text fz={theme.fontSizes.md}>Branch Code</Text>
-            <SortUp width={24} height={24} color={theme.colors.slate[4]}  />
+            <SortUp width={24} height={24} color={theme.colors.slate[4]} />
           </Flex>
         ),
-        Cell: ({ row }) =>{ 
+        Cell: ({ row }) => {
           return (
-            <TextMono fz={theme.fontSizes.sm} fw={theme.fontWeights.medium} lh={'1.1375rem'}>
+            <TextMono
+              fz={theme.fontSizes.sm}
+              fw={theme.fontWeights.medium}
+              lh={'1.1375rem'}
+            >
               {row.original.branchCode}
             </TextMono>
-          
-        )},
+          )
+        },
       },
       {
         accessorKey: 'branchName',
@@ -45,7 +50,7 @@ export default function Table() {
         Header: () => (
           <Flex direction={'row'} gap={theme.spacing.sm}>
             <Text fz={theme.fontSizes.md}>Branch Name</Text>
-            <SortUp width={24} height={24} color={theme.colors.slate[4]}  />
+            <SortUp width={24} height={24} color={theme.colors.slate[4]} />
           </Flex>
         ),
       },
@@ -56,7 +61,7 @@ export default function Table() {
         Header: () => (
           <Flex direction={'row'} gap={theme.spacing.sm}>
             <Text fz={theme.fontSizes.md}>Address</Text>
-            <SortUp width={24} height={24} color={theme.colors.slate[4]}  />
+            <SortUp width={24} height={24} color={theme.colors.slate[4]} />
           </Flex>
         ),
       },
@@ -67,7 +72,7 @@ export default function Table() {
         Header: () => (
           <Flex direction={'row'} gap={theme.spacing.sm}>
             <Text fz={theme.fontSizes.md}>Contact Details</Text>
-            <SortUp width={24} height={24} color={theme.colors.slate[4]}  />
+            <SortUp width={24} height={24} color={theme.colors.slate[4]} />
           </Flex>
         ),
       },
@@ -77,7 +82,14 @@ export default function Table() {
         header: 'Status',
         Header: () => (
           <Flex direction={'row'} gap={theme.spacing.sm}>
-            <Text fz={theme.fontSizes.md} fw={theme.fontWeights.bold} lh={theme.lineHeights.md} color={theme.colors.slate[6]}>Status</Text>
+            <Text
+              fz={theme.fontSizes.md}
+              fw={theme.fontWeights.bold}
+              lh={theme.lineHeights.md}
+              color={theme.colors.slate[6]}
+            >
+              Status
+            </Text>
             <SortUp width={24} height={24} color={theme.colors.slate[4]} />
           </Flex>
         ),
@@ -100,7 +112,6 @@ export default function Table() {
     mantinePaperProps: {
       shadow: 'none',
     },
-
   })
 
   return (
@@ -108,9 +119,7 @@ export default function Table() {
       <MantineTable
         fontSize='lg'
         highlightOnHover
-        horizontalSpacing='xl'
         striped
-        verticalSpacing='xs'
         m='0'
       >
         <TableHead>
@@ -132,18 +141,20 @@ export default function Table() {
         </TableHead>
         <tbody>
           {table.getRowModel().rows.map((row) => (
-            <TableRow
-              key={row.id}
-            >
+            <TableRow key={row.id}>
               {row.getVisibleCells().map((cell) => (
                 <TableData key={cell.id}>
-
                   {flexRender(
                     cell.column.columnDef.Cell ?? cell.column.columnDef.cell,
                     cell.getContext()
                   )}
                 </TableData>
               ))}
+              <TableData>
+                <MoreActionButton>
+                  <MoreHoriz width={24} height={24} color={theme.colors.slate[7]}/>
+                </MoreActionButton>
+                </TableData>
             </TableRow>
           ))}
         </tbody>
