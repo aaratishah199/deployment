@@ -65,7 +65,7 @@ interface LinksGroupProps {
     label: string
     initiallyOpened?: boolean
     link?: string
-    links?: { label: string; initiallyOpened?: boolean; link?: string }[]
+    links?: { label: string; initiallyOpened?: boolean; link: string }[]
   }[]
 }
 
@@ -154,11 +154,11 @@ export function LinksGroup({
   ))
 
   const nestedItems = (
-    hasNestedLinks && nestedLinks != undefined && nestedLinks?.links
+    hasNestedLinks && nestedLinks?.links
       ? nestedLinks.links
       : []
   ).map((link) => (
-    <Box component={Link} to={link.link!} key={link?.label} td={'none'}>
+    <Box component={Link} to={link.link} key={link?.label} td={'none'}>
       <Text
         color={
           currentLocation(link.link)
@@ -181,7 +181,7 @@ export function LinksGroup({
     <>
       <UnstyledButton
         onClick={() => {
-          setOpened((o) => !o)
+          setOpened((navOpened) => !navOpened)
         }}
         className={classes.control}
         bg={currentLocation(link) ? theme.colors.brandBlue[7] : 'none'}

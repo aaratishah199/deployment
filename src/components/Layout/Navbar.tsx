@@ -23,11 +23,7 @@ function Nav() {
         align={'flex-start'}
         justify={'flex-start'}
       >
-        <LogoImage
-          src={logo}
-          alt='Bon International Logo'
-          height={'48px'}
-        />
+        <LogoImage src={logo} alt='Bon International Logo' height={'48px'} />
       </Flex>
       <Navbar.Section pt={theme.spacing.xl} grow component={ScrollArea}>
         {links}
