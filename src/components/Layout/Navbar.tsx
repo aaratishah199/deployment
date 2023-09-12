@@ -27,7 +27,6 @@ function Nav() {
           src={logo}
           alt='Bon International Logo'
           height={'48px'}
-          fit='contain'
         />
       </Flex>
       <Navbar.Section pt={theme.spacing.xl} grow component={ScrollArea}>
