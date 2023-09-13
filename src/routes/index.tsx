@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router'
 import {
   BranchesPage,
-  CompantProfilesPage,
+  CompanyProfilesPage,
   DashboardPage,
   LoginPage,
   StyleGuidePage,
@@ -37,7 +37,7 @@ const BonPanel = () => {
         <Route element={<PrivateRoute isAuth={isAuth} />}>
           <Route index element={<DashboardPage />} path={routes.dashboard} />
           <Route
-            element={<CompantProfilesPage />}
+            element={<CompanyProfilesPage />}
             path={routes.companyProfile}
           />
           <Route element={<BranchesPage />} path={routes.branches} />

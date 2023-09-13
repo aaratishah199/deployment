@@ -4,7 +4,6 @@ import { ArrowRight } from 'iconoir-react'
 import { useMediaQuery } from '@mantine/hooks'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useMutation } from '@tanstack/react-query'
-import { notifications } from '@mantine/notifications'
 import API from 'services'
 import LoginValidationSchema from 'utils/validations/login'
 import { routes } from 'constants/constants'
@@ -12,9 +11,11 @@ import theme from 'constants/theme'
 import { useStore } from 'store/globalStore'
 import RhfTextInput from 'components/ReactHookForm/TextInput/RhfTextInput'
 import { TextBody } from 'components/Typography'
+import { toast } from 'utils/mantineNotifications'
+import { AxiosErrorResponse, errorMessage } from 'utils/errorMessage'
 
-import airplaneImg from 'assets/images/airplane.png'
 import logo from 'assets/images/logo.png'
+import airplaneImg from 'assets/images/airplane.png'
 
 interface LoginFieldTypes {
   email: string
@@ -46,12 +47,12 @@ const Index = () => {
           token,
         })
     },
-    onError: (data) => {
-      notifications.show({
-        title: 'Login Failed',
-        message: 'Invalid Credentials',
+    onError: (data: AxiosErrorResponse) => {
+      toast({
+        title: 'login failed',
+        message: errorMessage(data),
+        type: 'error',
       })
-      console.log(data)
     },
   })
 
