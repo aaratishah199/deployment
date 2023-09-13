@@ -1,4 +1,4 @@
-import { routes } from 'constants/routes'
+import { routes } from 'constants/constants'
 
 export type BranchTableType = {
   branchCode: string

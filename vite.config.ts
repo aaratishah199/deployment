@@ -12,7 +12,9 @@ export default defineConfig({
       pages: '/src/pages',
       routes: '/src/routes',
       store: '/src/store',
+      services: '/src/services',
       utils: '/src/utils',
+      lib: '/src/lib',
     },
   },
 })

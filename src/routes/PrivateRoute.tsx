@@ -1,5 +1,5 @@
 import { Navigate, Outlet } from 'react-router'
-import { routes } from 'constants/routes'
+import { routes } from 'constants/constants'
 
 type Props = {
   isAuth: boolean

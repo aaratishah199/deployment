@@ -1,6 +1,6 @@
 import { Text } from '@mantine/core'
 import { Layout } from 'components/Layout'
-import { routes } from 'constants/routes'
+import { routes } from 'constants/constants'
 import { Link } from 'react-router-dom'
 
 const CompanyProfile = () => {

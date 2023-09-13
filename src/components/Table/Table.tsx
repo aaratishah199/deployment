@@ -96,7 +96,9 @@ export default function Table() {
         ),
         Cell: ({ row }) => {
           return (
-            <Chip tt={'capitalize'} color='red' variant='filled'>{row.original.status}</Chip>
+            <Chip tt={'capitalize'} color='red' variant='filled'>
+              {row.original.status}
+            </Chip>
           )
         },
       },

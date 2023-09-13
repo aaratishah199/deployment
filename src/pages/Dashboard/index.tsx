@@ -1,6 +1,6 @@
 import { Text } from '@mantine/core'
 import { Link } from 'react-router-dom'
-import { routes } from 'constants/routes'
+import { routes } from 'constants/constants'
 import { Layout } from 'components/Layout'
 
 const Index = () => {

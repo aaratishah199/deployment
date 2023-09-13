@@ -2,7 +2,7 @@ import { Suspense } from 'react'
 import { Navigate, Route, Routes } from 'react-router'
 import {
   BranchesPage,
-  CompantProfilesPage,
+  CompanyProfilesPage,
   DashboardPage,
   LoginPage,
   StyleGuidePage,
@@ -11,10 +11,11 @@ import {
 
 import PrivateRoute from './PrivateRoute'
 import PublicRoutes from './PublicRoute'
-import { routes } from 'constants/routes'
+import { routes } from 'constants/constants'
+import { useStore } from 'store/globalStore'
 
 const BonPanel = () => {
-  const isAuth = true
+  const isAuth = useStore((state) => state.isAuth)
   return (
     <Suspense fallback='Loading...'>
       <Routes>
@@ -36,7 +37,7 @@ const BonPanel = () => {
         <Route element={<PrivateRoute isAuth={isAuth} />}>
           <Route index element={<DashboardPage />} path={routes.dashboard} />
           <Route
-            element={<CompantProfilesPage />}
+            element={<CompanyProfilesPage />}
             path={routes.companyProfile}
           />
           <Route element={<BranchesPage />} path={routes.branches} />

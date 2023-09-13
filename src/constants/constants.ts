@@ -14,6 +14,7 @@ export const routes = {
   login: '/login',
   dashboard: '/dashboard',
   styleGuide: '/style-guide',
+  forgotPassword: '/forgot-password',
   branches: '/branches',
   suppliers: '/company-settings/suppliers',
   companyProfile: '/company-profile',
